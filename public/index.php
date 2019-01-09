@@ -71,6 +71,7 @@ function printJob($job) {
 $route = $matcher->match($request);
 if (!$route) {
     echo 'no route ';
+    var_dump($route);
 } else {
     $actionName=$route->handler['action'];
     $controller=new $route->handler['controller'];
