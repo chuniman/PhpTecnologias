@@ -76,6 +76,7 @@ if (!$route) {
     $actionName=$route->handler['action'];
     $controller=new $route->handler['controller'];
 
-    $controller->$actionName($request);
+    $response= $controller->$actionName($request);
+    echo $response->getBody();
 
 }

@@ -19,8 +19,8 @@ class JobsController extends BaseController{
             
             $job->save();
         }
-        //include '../views/addJob.php';
-        echo $this->renderHTML('addJob.twig');
+        //include '../views/addJob.twig';
+        return $this->renderHTML('addJob.twig');
     }
 
 }
