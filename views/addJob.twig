@@ -1,7 +1,10 @@
+{%extends "layout.twig"%}
 
 {%block content %}
-
-    <form action="/cursoPHP/job/add/" method="POST">
+    <div class="alert alert-danger" role="alert">
+        {{responseMessage}}
+    </div>
+    <form action="/cursoPHP/job/add/" method="POST" enctype="multipart/form-data">
         <div class="row">
             <div class="col-xs-7  col-xs-offset-1">
                 <h4> Ingreso de Jobs </h4>
@@ -21,6 +24,12 @@
                     <label for="months-jobs">months</label>
                     <input type="text" id="months-jobs" name="months-jobs" class="form-control" placeholder="Ingrese months" />
                 </div>
+                
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="file-jobs" id="validatedCustomFile" required>
+                    <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                </div>
+                
                 <input type="submit" value="Guardar">
             </div>
         </div>
