@@ -1,14 +1,25 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-class Job extends Model{
+
+class Job extends Model {
 
     protected $title;
     protected $description;
     protected $visible;
     protected $months;
+    protected $dirImagen;
+    
+    function getDirImagen() {
+        return $this->dirImagen;
+    }
 
+    function setDirImagen($dirImagen) {
+        $this->dirImagen = $dirImagen;
+    }
+    
     function getTitle() {
         return $this->title;
     }
@@ -42,14 +53,13 @@ class Job extends Model{
     }
 
     function __construct() {
-      
+        
     }
+
 //    function __construct($tit,$desc,$vis,$mon) {
 //        $this->title=$tit;
 //        $this->description=$desc;
 //        $this->visible=$vis;
 //        $this->months=$mon;        
 //    }
-
-
 }
