@@ -1,0 +1,27 @@
+{%extends "layout.twig"%}
+
+{%block content %}
+
+    <form>
+        <div class="row">
+            <div class="col-xs-7  col-xs-offset-1">
+                <h4> Login</h4>
+                <div class="form-group">
+                    <label for="email-user">email</label>
+                    <input type="email" id="email-user" name="email-user" class="form-control" placeholder="Ingrese email" />
+                </div>
+                <div class="form-group">
+                    <label for="password-user">password</label>
+                    <input type="password" id="password-user" name="password-user" class="form-control" placeholder="Ingrese password" />
+                </div>
+                <input type="submit" class="btn btn-primary" value="Guardar">
+
+            </div>
+        </div>
+
+    </form>
+
+
+
+
+{% endblock %}

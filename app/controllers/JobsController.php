@@ -12,6 +12,8 @@ class JobsController extends BaseController {
         if ($request->getMethod() == 'POST') {
 
             $postData = $request->getParsedBody();
+            
+            var_dump($postData);
 
             $jobValidator = v::key('title-jobs', v::stringType()->notEmpty())->key('description-jobs', v::stringType()->notEmpty());
 
@@ -30,15 +32,12 @@ class JobsController extends BaseController {
                 //no es lo recomendable pero es un ejemplo de algo que anda
                 //estaria para ahora hacer que los jobs tengan imagenes
                 $files=$request->getUploadedFiles();
-                //var_dump($files);
                 $imagenNar=$files['file-jobs'];
-                //var_dump($imagenNar);
                 if ($imagenNar->getError()== \UPLOAD_ERR_OK){
                     $fileName=$imagenNar->getClientFilename();
                     $imagenNar->moveTo("uploads/$fileName");
                 }
                 $job->dirImagen="uploads/$fileName";
-                //var_dump($job->dirImagen);
                 $job->save();
                 $responseMessage = 'Saved';
             } catch (\Exception $exc) {

@@ -1,0 +1,29 @@
+{%extends "layout.twig"%}
+
+{%block content %}
+    <div class="alert alert-danger" role="alert">
+        {{responseMessage}}
+    </div>
+    <form action="/cursoPHP/user/add/" method="POST">
+        <div class="row">
+            <div class="col-xs-7  col-xs-offset-1">
+                <h4> Ingreso de Users </h4>
+                <div class="form-group">
+                    <label for="email-user">email</label>
+                    <input type="email" id="email-user" name="email-user" class="form-control" placeholder="Ingrese email" />
+                </div>
+                <div class="form-group">
+                    <label for="name-user">name</label>
+                    <input type="text" id="name-user" name="name-user" class="form-control" placeholder="Ingrese nombre" />
+                </div>
+                <div class="form-group">
+                    <label for="password-user">password</label>
+                    <input type="password" id="password-user" name="password-user" class="form-control" placeholder="Ingrese password" />
+                </div>
+
+                <input type="submit" class="btn btn-primary" value="Guardar">
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

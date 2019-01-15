@@ -44,17 +44,35 @@ $map->get('index', '/cursoPHP/', [
     'action'=>'indexAction'
  ]);
 
-//pagina de agregar jobs
+//pagina de agregar Jobs
 $map->get('addJob', '/cursoPHP/job/add/',[
     'controller'=>'App\Controllers\JobsController',
     'action'=>'AddJobAction'
  ]);
 
-//esto es para poder efectivamente agregar jobs
+//esto es para poder efectivamente agregar Jobs
 $map->post('postJob', '/cursoPHP/job/add/',[
     'controller'=>'App\Controllers\JobsController',
     'action'=>'AddJobAction'
  ]);
+
+//pagina agregar Users
+$map->get('addUserView','/cursoPHP/user/add/',[
+    'controller'=>'App\Controllers\UserController',
+    'action'=>'AddUserView'
+]);
+
+//accion para agregar Users
+$map->post('postUser','/cursoPHP/user/add/',[
+    'controller'=>'App\Controllers\UserController',
+    'action'=>'AddUserAction'
+]);
+
+$map->get('loginView', '/cursoPHP/login/',[
+    'controller'=>'App\Controllers\AuthController',
+    'action'=>'LoginView'
+]);
+
 
 $matcher = $routerContainer->getMatcher();
 
