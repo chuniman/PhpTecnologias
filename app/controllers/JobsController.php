@@ -11,10 +11,8 @@ class JobsController extends BaseController {
         $responseMessage = null;
         if ($request->getMethod() == 'POST') {
 
-            $postData = $request->getParsedBody();
-            
-            var_dump($postData);
-
+            $postData = $request->getParsedBody();       
+          
             $jobValidator = v::key('title-jobs', v::stringType()->notEmpty())->key('description-jobs', v::stringType()->notEmpty());
 
             try {
