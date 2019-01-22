@@ -4,11 +4,18 @@ namespace App\Controllers;
 
 use App\Models\User;
 use Respect\Validation\Validator as v;
+use Zend\Diactoros\Response\RedirectResponse;
 
 class UserController extends BaseController {
 
-    public function AddUserView($request) {
-        return $this->renderHTML('addUser.twig');
+    public function AddUserView() {
+        $sessionName = $_SESSION['userName'] ?? NULL;
+
+        if (!$sessionName) {
+            return new RedirectResponse('/cursoPHP/login/');
+        } else {
+            return $this->renderHTML('addUser.twig');
+        }
     }
 
     public function AddUserAction($request) {
@@ -41,7 +48,7 @@ class UserController extends BaseController {
         } catch (\Exception $exc) {
             $responseMessage = $exc->getMessage();
         }
-        return $this->renderHTML('addUser.twig',['responseMessage'=>$responseMessage]);
+        return $this->renderHTML('addUser.twig', ['responseMessage' => $responseMessage]);
     }
 
 }

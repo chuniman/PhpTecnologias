@@ -6,6 +6,11 @@ error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 
+session_start();
+
+$dotenv = Dotenv\Dotenv::create(__DIR__ . '/..');
+$dotenv->load();
+
 use Aura\Router\RouterContainer;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
@@ -14,11 +19,11 @@ $routerContainer = new RouterContainer();
 $capsule = new Capsule;
 
 $capsule->addConnection([
-    'driver' => 'mysql',
-    'host' => 'localhost',
-    'database' => 'cursophp',
-    'username' => 'root',
-    'password' => '',
+    'driver' => getenv('DB_DRIVER'),
+    'host' => getenv('DB_HOST'),
+    'database' => getenv('DB_NAME'),
+    'username' => getenv('DB_USER'),
+    'password' => getenv('DB_PASS'),
     'charset' => 'utf8',
     'collation' => 'utf8_unicode_ci',
     'prefix' => '',
@@ -44,7 +49,7 @@ $map->get('index', '/cursoPHP/', [
 //pagina de agregar Jobs
 $map->get('addJob', '/cursoPHP/job/add/', [
     'controller' => 'App\Controllers\JobsController',
-    'action' => 'AddJobAction'
+    'action' => 'AddJobView'
 ]);
 
 //esto es para poder efectivamente agregar Jobs
@@ -107,6 +112,7 @@ if (!$route) {
     echo 'no route ';
     var_dump($route);
 } else {
+    
 //    $needsAuth = $route->handler['auth'] ?? FALSE;
 //    $sessionName = $_SESSION['userName'] ?? NULL;
 //    if ($needsAuth && !$sessionName) {
