@@ -40,6 +40,9 @@ $request = Zend\Diactoros\ServerRequestFactory::fromGlobals(
 
 $map = $routerContainer->getMap();
 
+//aca estan los redireccionamientos , depende de que pongan en la direccion a donde los lleva
+//no olvidarse de empezar con el nombre de la aplicacion
+
 //home en realidad no lo es pero se accede asi nomas
 $map->get('index', '/cursoPHP/', [
     'controller' => 'App\Controllers\IndexController',
@@ -95,6 +98,29 @@ $map->get('logout', '/cursoPHP/logout/', [
     'action' => 'LogOut'
 ]);
 
+
+//$map->get('check', '/cursoPHP/job/check/{id}', function ($request){
+//    $id=$request->getAttribute('id');
+//    $job= Task::find($id);
+//    $job->visible=true;
+//    $job->save();
+//    $response=new Zend\Diactoros\Response\RedirectResponse('/crudMaster/');
+//    return $response;
+//});
+
+//mostrar pagina de ViewJobs
+$map->get('ViewJobs', '/cursoPHP/admin/', [
+    'controller' => 'App\Controllers\AdminController',
+    'action' => 'MostrarJobsView',
+    'auth' => TRUE
+]);
+
+//para borrar un job
+$map->get('deleteJob', '/cursoPHP/job/delete/{id}',[
+    'controller'=>'App\Controllers\JobsController',
+    'action'=>'DeleteJob'
+]);
+
 $matcher = $routerContainer->getMatcher();
 
 function printJob($job) {
@@ -113,12 +139,7 @@ if (!$route) {
     var_dump($route);
 } else {
     
-//    $needsAuth = $route->handler['auth'] ?? FALSE;
-//    $sessionName = $_SESSION['userName'] ?? NULL;
-//    if ($needsAuth && !$sessionName) {
-//        echo 'protected route';
-//        die;
-//    } 
+    //aca se dice tal ruta va tener una respuesta de un controlador y una accion(metodo)
     $actionName = $route->handler['action'];
     $controller = new $route->handler['controller'];
     $response = $controller->$actionName($request);

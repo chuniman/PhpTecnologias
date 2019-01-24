@@ -1,0 +1,23 @@
+{%extends "layout.twig"%}
+
+{%block content %}
+            <ul class="list-group">
+            {% for job in jobs %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span 
+                    {% if job.visible %} style="text-decoration: line-through;" {% endif %}
+                >
+                {{ job.description }}
+                </span>
+                <span>
+                {% if job.visible %}
+                    <a href="/cursoPHP/job/uncheck/{{ job.id }}" ><i class="far fa-check-square" style="color:green;" ></i></a>
+                {% else %}
+                    <a href="/cursoPHP/job/check/{{ job.id }}" ><i class="far fa-square" style="color:black;" ></i></a>
+                {% endif %}
+                <a href="/cursoPHP/job/delete/{{ job.id }}" ><i class="fas fa-trash-alt" style="color:red;" ></i></a>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+{% endblock %}

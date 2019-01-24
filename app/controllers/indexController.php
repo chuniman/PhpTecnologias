@@ -12,7 +12,7 @@ class IndexController extends BaseController{
         //require_once ('mostrarJobs.php');
 
 
-        $name = 'Hector Benitez';
+        $name = 'Juan Ignacio Zunino';
         $limitMonths = 2000;
         
        // include '../views/index.php';
