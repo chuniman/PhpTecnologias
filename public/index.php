@@ -98,28 +98,44 @@ $map->get('logout', '/cursoPHP/logout/', [
     'action' => 'LogOut'
 ]);
 
+//de todas maneras igual no andan
 
+////lo marca como no disponible , no esta bien ponerlo aca tengo que ver como pasar el id
+////luego tengo que ponerle un form y un combobox para hacerlo funcionar prolijo
 //$map->get('check', '/cursoPHP/job/check/{id}', function ($request){
 //    $id=$request->getAttribute('id');
 //    $job= Task::find($id);
 //    $job->visible=true;
 //    $job->save();
-//    $response=new Zend\Diactoros\Response\RedirectResponse('/crudMaster/');
+//    $response=new Zend\Diactoros\Response\RedirectResponse('/cursoPHP/job/add/');
+//    return $response;
+//});
+//
+////esto lo hace visible de nuevo, esto esta mal no puedo andar teniedo 2 metodos deberia ser uno
+//$map->get('uncheck', '/cursoPHP/job/uncheck/{id}', function ($request){
+//    $id=$request->getAttribute('id');
+//    $job= Task::find($id);
+//    $job->visible=FALSE;
+//    $job->save();
+//    $response=new Zend\Diactoros\Response\RedirectResponse('/cursoPHP/job/add/');
+//    return $response;
+//});
+//
+////otro metodo que quisiera cambiar
+//$map->get('delete', '/cursoPHP/job/delete/{id}', function ($request){
+//    $id=$request->getAttribute('id');
+//    $task= Task::find($id);
+//    $task->delete();
+//    $response=new Zend\Diactoros\Response\RedirectResponse('/cursoPHP/job/add/');
 //    return $response;
 //});
 
-//mostrar pagina de ViewJobs
-$map->get('ViewJobs', '/cursoPHP/admin/', [
-    'controller' => 'App\Controllers\AdminController',
-    'action' => 'MostrarJobsView',
-    'auth' => TRUE
-]);
 
-//para borrar un job
-$map->get('deleteJob', '/cursoPHP/job/delete/{id}',[
-    'controller'=>'App\Controllers\JobsController',
-    'action'=>'DeleteJob'
-]);
+//para borrar un job no anda no le puedo pasar el id al controller
+//$map->delete('deleteJob', '/cursoPHP/job/delete/{id}',[
+//    'controller'=>'App\Controllers\JobsController',
+//    'action'=>'DeleteJob'
+//]);
 
 $matcher = $routerContainer->getMatcher();
 

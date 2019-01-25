@@ -8,10 +8,6 @@ class IndexController extends BaseController{
 
     public function indexAction() {
         $jobs = Job::all();
-
-        //require_once ('mostrarJobs.php');
-
-
         $name = 'Juan Ignacio Zunino';
         $limitMonths = 2000;
         

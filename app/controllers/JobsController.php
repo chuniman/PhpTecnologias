@@ -14,7 +14,8 @@ class JobsController extends BaseController {
         if (!$sessionName) {
             return new RedirectResponse('/cursoPHP/login/');
         } else {
-            return $this->renderHTML('addJob.twig', ['responseMessage' => $responseMessage]);
+            $jobs = Job::all();
+            return $this->renderHTML('addJob.twig', ['jobs' => $jobs]);
         }
     }
 
@@ -55,6 +56,16 @@ class JobsController extends BaseController {
         }
         //include '../views/addJob.twig';
         return $this->renderHTML('addJob.twig', ['responseMessage' => $responseMessage]);
+    }
+
+    public function DeleteJob($request) {
+        $id = $request->getAttribute('id');
+        //echo $id;
+        $job = Job::find($id);
+        var_dump($request);
+        $job->delete();
+        $responseMessage = 'deleted';
+        return new RedirectResponse('/cursoPHP/job/add/',['responseMessage' => $responseMessage]);
     }
 
 }

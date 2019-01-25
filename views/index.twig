@@ -31,21 +31,14 @@
             <div>
                 <h3 class="border-bottom-gray" >Work Experience</h3>
                 <ul class="list-group">
-
                     {% for job in jobs %}
                         <li class="work-position list-group-item d-flex justify-content-between align-items-center"> 
-                            {#<div class="row">#}
-                            {# <div class="col-xs-6">#}
                             <div>
                                 <h5>titulo: {{ job.title }}</h5>
                                 <p>descripcion: {{job.description}}</p>
                                 <p>meses: {{job.months}}</p>
                             </div>
-                            {#</div>#}
-                            {# <div class="col-xs-6">#}
                             <img width="30%" src="{{job.dirImagen}}"> 
-                            {#</div>#}
-                            {#</div>#}
                         </li>
                     {% endfor %}
                 </ul>
